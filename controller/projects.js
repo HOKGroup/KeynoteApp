@@ -1,26 +1,26 @@
 var mongoose = require('mongoose'),
 
-Keynote = mongoose.model('Keynote');
+Project = mongoose.model('Project');
 
-KeynoteService = {
+ProjectService = {
 
   findAll : function(req, res){
-    Keynote.find({},function(err, results) {
+    Project.find({},function(err, results) {
       return res.send(results);
     });
   },
 
   findById : function(req, res){
     var id = req.params.id;
-    Keynote.findOne({'_id':id},function(err, result) {
+    Project.findOne({'_id':id},function(err, result) {
       return res.send(result);
     });
   },
 
   add : function(req, res) {
-    Keynote.create(req.body, function (err, keynoteEntry) {
+    Project.create(req.body, function (err, project) {
       if (err) return console.log(err);
-      return res.send(keynoteEntry);
+      return res.send(project);
     });
   },
 
@@ -28,7 +28,7 @@ KeynoteService = {
     var id = req.params.id;
     //console.log(req.body);
     console.log('Updating ' + id);
-    Keynote.update({"_id":id}, req.body, {upsert:true},
+    Project.update({"_id":id}, req.body, {upsert:true},
       function (err, numberAffected) {
         if (err) return console.log(err);
         console.log('Updated %s instances', numberAffected.toString());
@@ -38,11 +38,11 @@ KeynoteService = {
 
   delete : function(req, res){
     var id = req.params.id;
-    Keynote.remove({'_id':id},function(result) {
+    Project.remove({'_id':id},function(result) {
       return res.send(result);
     });
   }
 
   };
 
-module.exports = KeynoteService;
+module.exports = ProjectService;

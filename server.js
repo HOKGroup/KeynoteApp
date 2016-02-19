@@ -15,7 +15,8 @@ var mongoose = require( 'mongoose' );
 var localMongo = true;
 
 if(localMongo){
-	var mongo_uri = 'mongodb://localhost/keynote';
+	//local database
+	var mongo_uri = 'mongodb://localhost/keynotedb';
 } else{
 	var mongo_uri='mongodb://admin:admin@ds011158.mongolab.com:11158/keynote';
 }
@@ -34,6 +35,8 @@ app.use( bodyParser.json({ limit: '10mb' }) );
 app.use( bodyParser.urlencoded({ extended: true, limit: '10mb' }) );
 
 require( './model/keynote' );
+require( './model/keynoteset' );
+require( './model/project' );
 require( './routes' )( app );
 
 app.get( '/', function( request, response ) {
