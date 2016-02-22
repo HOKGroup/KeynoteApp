@@ -12,13 +12,13 @@ var cool = require('cool-ascii-faces');
 var express = require('express');
 var mongoose = require( 'mongoose' );
 
-var localMongo = true;
+var localMongo = false;
 
 if(localMongo){
 	//local database
 	var mongo_uri = 'mongodb://localhost/keynotedb';
 } else{
-	var mongo_uri='mongodb://admin:admin@ds011158.mongolab.com:11158/keynote';
+	var mongo_uri='mongodb://admin:admin@ds013898.mongolab.com:13898/keynotedatabase';
 }
 
 mongoose.connect(mongo_uri);
