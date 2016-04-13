@@ -17,6 +17,13 @@ KeynoteService = {
     });
   },
 
+  findBySetId : function(req, res){
+    var id = req.params.setid;
+    Keynote.find({'keynoteSet_id':id},function(err, result) {
+      return res.send(result);
+    });
+  },
+  
   add : function(req, res) {
     Keynote.create(req.body, function (err, keynoteEntry) {
       if (err) return console.log(err);
