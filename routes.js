@@ -6,6 +6,7 @@
     app.post('/api/v1/keynotes', keynotes.insertBatch);
     app.put('/api/v1/keynotes/:id', keynotes.update);
     app.delete('/api/v1/keynotes/:id', keynotes.delete);
+	app.delete('/api/v1/keynotes/setid/:setid', keynotes.deleteAllForKeynoteSet);
 	
 	var projects = require('./controller/projects');
 	app.get('/api/v1/projects', projects.findAll);

@@ -56,6 +56,13 @@ KeynoteService = {
     Keynote.remove({'_id':id},function(result) {
       return res.send(result);
     });
+  },
+  
+  deleteAllForKeynoteSet : function(req, res){
+    var id = req.params.setid;
+    Keynote.remove({'keynoteSet_id':id},function(err, results) {
+      return res.send(results);
+    });
   }
 
   };
