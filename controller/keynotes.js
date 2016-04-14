@@ -24,12 +24,20 @@ KeynoteService = {
     });
   },
   
-  add : function(req, res) {
-    Keynote.create(req.body, function (err, keynoteEntry) {
+  insertBatch : function(req, res) {
+    console.log('Insert batch');
+    Keynote.insertMany(req.body, function (err, keynoteEntry) {
       if (err) return console.log(err);
       return res.send(keynoteEntry);
     });
   },
+  
+  /* add : function(req, res) {
+    Keynote.create(req.body, function (err, keynoteEntry) {
+      if (err) return console.log(err);
+      return res.send(keynoteEntry);
+    });
+  }, */
 
   update : function(req, res) {
     var id = req.params.id;
